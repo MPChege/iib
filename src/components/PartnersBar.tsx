@@ -1,33 +1,32 @@
 export default function PartnersBar() {
+  const partners = ["Acumatica", "AcuRental", "AcuBoost", "AcuConstruct", "AcuEquipment", "Sage 100"];
+
   return (
     <div
       style={{
         width: "100%",
-        height: "113px",
         backgroundColor: "#0A1730",
-        display: "flex",
-        alignItems: "center",
+        padding: "clamp(24px, 4vw, 0px)",
       }}
     >
       <div
+        className="flex flex-col sm:flex-row items-start sm:items-center flex-wrap"
         style={{
           maxWidth: "1320px",
           width: "100%",
           margin: "0 auto",
-          paddingLeft: "96px",
-          paddingRight: "96px",
-          display: "flex",
-          alignItems: "center",
-          gap: "48px",
+          paddingLeft: "clamp(24px, 6vw, 96px)",
+          paddingRight: "clamp(24px, 6vw, 96px)",
+          paddingTop: "clamp(20px, 3vw, 36px)",
+          paddingBottom: "clamp(20px, 3vw, 36px)",
+          gap: "clamp(16px, 3vw, 48px)",
         }}
       >
         <span
           style={{
-            width: "290px",
-            height: "17px",
             fontFamily: "Inter, sans-serif",
             fontWeight: 600,
-            fontSize: "14px",
+            fontSize: "clamp(11px, 1vw, 14px)",
             lineHeight: "100%",
             letterSpacing: "0.33em",
             color: "#A8C8FF",
@@ -38,16 +37,14 @@ export default function PartnersBar() {
           BUILT ON &amp; CERTIFIED FOR
         </span>
 
-
-        <div style={{ display: "flex", alignItems: "center", gap: "48px", marginLeft: "80px" }}>
-          {["Acumatica", "AcuRental", "AcuBoost", "AcuConstruct", "AcuEquipment", "Sage 100"].map((name) => (
+        <div className="flex flex-wrap items-center" style={{ gap: "clamp(16px, 3vw, 48px)", marginLeft: "clamp(0px, 4vw, 80px)" }}>
+          {partners.map((name) => (
             <span
               key={name}
               style={{
-                height: "17px",
                 fontFamily: "Inter, sans-serif",
                 fontWeight: 600,
-                fontSize: "14px",
+                fontSize: "clamp(12px, 1vw, 14px)",
                 lineHeight: "100%",
                 letterSpacing: "0",
                 color: "#A8C8FF",

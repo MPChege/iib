@@ -11,7 +11,7 @@ export default function Hero() {
         paddingTop: "116px",
       }}
     >
-      {/* Math textbook grid overlay — thin horizontal + vertical lines like graph paper */}
+      {/* Math textbook grid overlay */}
       <div
         className="absolute inset-0"
         style={{
@@ -23,31 +23,24 @@ export default function Hero() {
         }}
       />
 
-      {/* Hero content — starts below navbar (48px topbar + 8px gap + 65px pill + spacing) */}
-      <div
-        className="relative mx-auto flex flex-col md:flex-row items-start gap-0"
+      <div className="relative mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-10 lg:gap-0"
         style={{
           maxWidth: "1320px",
-          paddingLeft: "96px",
-          paddingRight: "96px",
-          paddingTop: "136px",
-          paddingBottom: "48px",
+          paddingLeft: "clamp(24px, 6vw, 96px)",
+          paddingRight: "clamp(24px, 6vw, 96px)",
+          paddingTop: "clamp(60px, 10vw, 136px)",
+          paddingBottom: "clamp(40px, 5vw, 48px)",
         }}
       >
         {/* LEFT COLUMN */}
-        <div
-          className="flex flex-col"
-          style={{ width: "536px", flexShrink: 0, gap: "32px" }}
-        >
-          {/* Headline — 536×192, Inter SemiBold 48px / 64px, -2% tracking, #FFF, 1px black border */}
+        <div className="flex flex-col w-full lg:w-auto lg:flex-shrink-0" style={{ maxWidth: "536px", gap: "32px" }}>
+
           <h1
             style={{
-              width: "536px",
-              height: "192px",
               fontFamily: "Inter, sans-serif",
               fontWeight: 600,
-              fontSize: "48px",
-              lineHeight: "64px",
+              fontSize: "clamp(32px, 4vw, 48px)",
+              lineHeight: "1.33",
               letterSpacing: "-0.02em",
               color: "#FFFFFF",
               margin: 0,
@@ -58,15 +51,12 @@ export default function Hero() {
             Run your entire rental operation from one intelligent platform
           </h1>
 
-          {/* Subtext — 536×120, Inter Regular 20px / 30px, -1% tracking, #D4E5FF */}
           <p
             style={{
-              width: "536px",
-              height: "120px",
               fontFamily: "Inter, sans-serif",
               fontWeight: 400,
-              fontSize: "20px",
-              lineHeight: "30px",
+              fontSize: "clamp(16px, 1.8vw, 20px)",
+              lineHeight: "1.5",
               letterSpacing: "-0.01em",
               color: "#D4E5FF",
               margin: 0,
@@ -76,22 +66,16 @@ export default function Hero() {
           </p>
 
           {/* CTA buttons */}
-          <div className="flex items-center" style={{ gap: "16px" }}>
-            {/* Book a demo — white fill, pill, 195×51 */}
+          <div className="flex flex-wrap items-center" style={{ gap: "16px" }}>
             <a
               href="#"
               style={{
                 display: "inline-flex",
-                flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
                 height: "51px",
                 borderRadius: "100px",
-                paddingTop: "16px",
-                paddingRight: "48px",
-                paddingBottom: "16px",
-                paddingLeft: "48px",
-                gap: "10px",
+                padding: "16px 48px",
                 backgroundColor: "#FFFFFF",
                 textDecoration: "none",
                 whiteSpace: "nowrap",
@@ -104,21 +88,15 @@ export default function Hero() {
               Book a demo
             </a>
 
-            {/* Explore Solutions — outlined, pill, 181×51 */}
             <a
               href="#"
               style={{
                 display: "inline-flex",
-                flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
                 height: "51px",
                 borderRadius: "100px",
-                paddingTop: "16px",
-                paddingRight: "24px",
-                paddingBottom: "16px",
-                paddingLeft: "24px",
-                gap: "10px",
+                padding: "16px 24px",
                 backgroundColor: "transparent",
                 border: "1px solid #FFFFFF",
                 textDecoration: "none",
@@ -133,16 +111,12 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Trust line — 536×42, Inter Light 14px / 21px, #D4E5FF */}
           <p
             style={{
-              width: "536px",
-              height: "42px",
               fontFamily: "Inter, sans-serif",
               fontWeight: 300,
               fontSize: "14px",
               lineHeight: "21px",
-              letterSpacing: "0",
               color: "#D4E5FF",
               margin: 0,
             }}
@@ -152,10 +126,7 @@ export default function Hero() {
         </div>
 
         {/* RIGHT COLUMN — dashboard screenshot */}
-        <div
-          className="flex-1 flex items-start justify-end"
-          style={{ paddingTop: "0px" }}
-        >
+        <div className="flex-1 flex items-center lg:items-start justify-center lg:justify-end w-full">
           <Image
             src="/Rectangle 1.svg"
             alt="AcuRental dashboard"
@@ -166,7 +137,6 @@ export default function Hero() {
           />
         </div>
       </div>
-
     </section>
   );
 }
