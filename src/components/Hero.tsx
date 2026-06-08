@@ -51,8 +51,8 @@ export default function Hero() {
               letterSpacing: "-0.02em",
               color: "#FFFFFF",
               margin: 0,
-              textShadow: "0 0 0 rgba(0,0,0,0.25)",
-              WebkitTextStroke: "0px",
+              WebkitTextStroke: "1px #000000",
+              paintOrder: "stroke fill",
             }}
           >
             Run your entire rental operation from one intelligent platform

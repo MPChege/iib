@@ -38,16 +38,8 @@ export default function PartnersBar() {
           BUILT ON &amp; CERTIFIED FOR
         </span>
 
-        <div
-          style={{
-            width: "1px",
-            height: "40px",
-            borderLeft: "1px dashed rgba(168,200,255,0.4)",
-            flexShrink: 0,
-          }}
-        />
 
-        <div style={{ display: "flex", alignItems: "center", gap: "48px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "48px", marginLeft: "80px" }}>
           {["Acumatica", "AcuRental", "AcuBoost", "AcuConstruct", "AcuEquipment", "Sage 100"].map((name) => (
             <span
               key={name}
