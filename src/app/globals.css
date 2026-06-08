@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --brand-blue: #1B3A6B;
+  --brand-blue-dark: #152D56;
+  --brand-blue-mid: #1E4080;
+  --brand-orange: #E8773A;
+  --brand-cyan: #00AEEF;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
