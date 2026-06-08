@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import PartnersBar from "@/components/PartnersBar";
 import FourWays from "@/components/FourWays";
 import OnePlatform from "@/components/OnePlatform";
 import Industries from "@/components/Industries";
@@ -12,6 +13,7 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
+      <PartnersBar />
       <FourWays />
       <OnePlatform />
       <Industries />

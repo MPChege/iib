@@ -1,81 +1,68 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const navLinks = ["Solutions", "About", "Webinars", "Success Stories", "Blog", "Contact Us"];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="w-full absolute top-0 left-0 right-0 z-50">
-      {/* Top bar — full width, 48px tall, #131A28 at 24% opacity */}
+    <header className="w-full sticky top-0 z-50">
+      {/* Top bar — always dark transparent, independent of scroll */}
       <div
         className="w-full flex items-center justify-between"
         style={{
-          height: "48px",
-          backgroundColor: "rgba(19, 26, 40, 0.24)",
+          height: "40px",
+          backgroundColor: "rgba(10, 23, 48, 0.85)",
           paddingLeft: "96px",
           paddingRight: "96px",
         }}
       >
-        <span
-          style={{
-            width: "105px",
-            height: "17px",
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 400,
-            fontSize: "14px",
-            lineHeight: "100%",
-            letterSpacing: "0",
-            color: "#FFFFFF",
-            textAlign: "center",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <span style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", color: "#FFFFFF" }}>
           (818) 956-3744
         </span>
-
-        <span
-          style={{
-            width: "141px",
-            height: "17px",
-            fontFamily: "Inter, sans-serif",
-            fontWeight: 400,
-            fontSize: "14px",
-            lineHeight: "100%",
-            letterSpacing: "0",
-            color: "#FFFFFF",
-            textAlign: "center",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+        <span style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", color: "#FFFFFF" }}>
           info@iigservices.com
         </span>
       </div>
 
-      {/* Navbar pill — 1320px wide, 65px tall, positioned 72px from top, 96px from left */}
+      {/* Pill row — transparent, no background */}
       <div
-        className="hidden md:flex"
-        style={{ paddingLeft: "96px", paddingRight: "96px", marginTop: "8px" }}
+        className="hidden md:flex transition-all duration-300"
+        style={{
+          paddingLeft: "96px",
+          paddingRight: "96px",
+          paddingTop: "10px",
+          paddingBottom: "10px",
+          background: scrolled ? "rgba(10, 23, 48, 0.92)" : "transparent",
+          backdropFilter: scrolled ? "blur(12px)" : "none",
+        }}
       >
         <div
           className="flex items-center"
           style={{
             width: "100%",
             maxWidth: "1320px",
-            height: "65px",
+            height: "56px",
             borderRadius: "100px",
-            paddingTop: "12px",
-            paddingRight: "12px",
-            paddingBottom: "12px",
-            paddingLeft: "24px",
+            paddingTop: "8px",
+            paddingRight: "8px",
+            paddingBottom: "8px",
+            paddingLeft: "20px",
             gap: "10px",
-            backgroundColor: "#FFFFFF",
+            backgroundColor: scrolled ? "#FFFFFF" : "rgba(255, 255, 255, 0.18)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            border: scrolled ? "none" : "1px solid rgba(255, 255, 255, 0.3)",
+            boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.1)" : "0 4px 32px rgba(0, 0, 0, 0.2)",
           }}
         >
           {/* Logo */}
@@ -88,8 +75,11 @@ export default function Navbar() {
             style={{ flexShrink: 0 }}
           />
 
-          {/* Nav links — left-aligned, tight to logo */}
-          <nav className="flex items-center gap-7" style={{ marginLeft: "24px" }}>
+          {/* Spacer */}
+          <div style={{ flex: 1 }} />
+
+          {/* Nav links */}
+          <nav className="flex items-center gap-7">
             {navLinks.map((link) => (
               <a
                 key={link}
@@ -100,7 +90,7 @@ export default function Navbar() {
                   fontSize: "14px",
                   lineHeight: "100%",
                   letterSpacing: "0",
-                  color: "#0072B1",
+                  color: scrolled ? "#0072B1" : "#FFFFFF",
                   textDecoration: "none",
                   whiteSpace: "nowrap",
                 }}
@@ -110,15 +100,11 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Spacer pushes button to the right */}
-          <div style={{ flex: 1 }} />
-
           {/* Partner Portal button */}
           <a
             href="#"
             style={{
               display: "inline-flex",
-              flexDirection: "row",
               alignItems: "center",
               justifyContent: "center",
               height: "41px",
@@ -133,34 +119,25 @@ export default function Navbar() {
               textDecoration: "none",
               whiteSpace: "nowrap",
               flexShrink: 0,
+              marginLeft: "16px",
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 600,
+              fontSize: "14px",
+              color: "#FFFFFF",
             }}
           >
-            <span
-              style={{
-                width: "95px",
-                height: "17px",
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 600,
-                fontSize: "14px",
-                lineHeight: "100%",
-                letterSpacing: "0",
-                textAlign: "center",
-                color: "#FFFFFF",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              Partner Portal
-            </span>
+            Partner Portal
           </a>
         </div>
       </div>
 
-      {/* Mobile nav bar */}
+      {/* Mobile nav */}
       <div
         className="md:hidden flex items-center justify-between px-6 py-3"
-        style={{ backgroundColor: "rgba(255,255,255,0.95)" }}
+        style={{
+          backgroundColor: "rgba(13, 43, 110, 0.92)",
+          backdropFilter: "blur(16px)",
+        }}
       >
         <Image src="/image 1.svg" alt="IIG Logo" width={92} height={36} priority />
         <button
@@ -168,7 +145,7 @@ export default function Navbar() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          <svg className="w-6 h-6" fill="none" stroke="#131A28" viewBox="0 0 24 24">
+          <svg className="w-6 h-6" fill="none" stroke="#FFFFFF" viewBox="0 0 24 24">
             {mobileOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -178,11 +155,10 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile dropdown */}
       {mobileOpen && (
         <div
           className="md:hidden flex flex-col gap-3 px-6 py-4"
-          style={{ backgroundColor: "#FFFFFF" }}
+          style={{ backgroundColor: "rgba(13, 43, 110, 0.98)", backdropFilter: "blur(16px)" }}
         >
           {navLinks.map((link) => (
             <a
@@ -192,7 +168,7 @@ export default function Navbar() {
                 fontFamily: "Inter, sans-serif",
                 fontWeight: 500,
                 fontSize: "14px",
-                color: "#131A28",
+                color: "#FFFFFF",
                 textDecoration: "none",
               }}
             >

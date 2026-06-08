@@ -6,15 +6,20 @@ export default function Hero() {
       className="relative overflow-hidden"
       style={{
         background: "linear-gradient(180deg, #0D2B6E 0%, #1A4A9E 40%, #1E5BB8 70%, #1A4A9E 100%)",
-        minHeight: "860px",
+        minHeight: "760px",
+        marginTop: "-116px",
+        paddingTop: "116px",
       }}
     >
-      {/* Grid dot pattern overlay */}
+      {/* Math textbook grid overlay — thin horizontal + vertical lines like graph paper */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px)`,
-          backgroundSize: "48px 48px",
+          backgroundImage: `
+            linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
         }}
       />
 
@@ -25,8 +30,8 @@ export default function Hero() {
           maxWidth: "1320px",
           paddingLeft: "96px",
           paddingRight: "96px",
-          paddingTop: "155px",
-          paddingBottom: "80px",
+          paddingTop: "136px",
+          paddingBottom: "48px",
         }}
       >
         {/* LEFT COLUMN */}
@@ -162,78 +167,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Partners bar — 1512×113, #0A1730 */}
-      <div
-        style={{
-          width: "100%",
-          height: "113px",
-          backgroundColor: "#0A1730",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1320px",
-            width: "100%",
-            margin: "0 auto",
-            paddingLeft: "96px",
-            paddingRight: "96px",
-            display: "flex",
-            alignItems: "center",
-            gap: "48px",
-          }}
-        >
-          {/* Label */}
-          <span
-            style={{
-              width: "290px",
-              height: "17px",
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 600,
-              fontSize: "14px",
-              lineHeight: "100%",
-              letterSpacing: "0.33em",
-              color: "#A8C8FF",
-              whiteSpace: "nowrap",
-              flexShrink: 0,
-            }}
-          >
-            BUILT ON &amp; CERTIFIED FOR
-          </span>
-
-          {/* Vertical divider */}
-          <div
-            style={{
-              width: "1px",
-              height: "40px",
-              borderLeft: "1px dashed rgba(168,200,255,0.4)",
-              flexShrink: 0,
-            }}
-          />
-
-          {/* Partner names */}
-          <div style={{ display: "flex", alignItems: "center", gap: "48px" }}>
-            {["Acumatica", "AcuRental", "AcuBoost", "AcuConstruct", "AcuEquipment", "Sage 100"].map((name) => (
-              <span
-                key={name}
-                style={{
-                  height: "17px",
-                  fontFamily: "Inter, sans-serif",
-                  fontWeight: 600,
-                  fontSize: "14px",
-                  lineHeight: "100%",
-                  letterSpacing: "0",
-                  color: "#A8C8FF",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
