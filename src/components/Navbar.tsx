@@ -1,18 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 const navLinks = ["Solutions", "About", "Webinars", "Success Stories", "Blog", "Contact Us"];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
     <header className="w-full sticky top-0 z-50">
@@ -21,7 +14,7 @@ export default function Navbar() {
         className="w-full flex items-center justify-between"
         style={{
           height: "40px",
-          backgroundColor: "rgba(10, 23, 48, 0.85)",
+          backgroundColor: "rgba(10, 23, 48, 0.95)",
           paddingLeft: "96px",
           paddingRight: "96px",
         }}
@@ -36,14 +29,13 @@ export default function Navbar() {
 
       {/* Pill row — transparent, no background */}
       <div
-        className="hidden md:flex transition-all duration-300"
+        className="hidden md:flex"
         style={{
           paddingLeft: "96px",
           paddingRight: "96px",
           paddingTop: "10px",
           paddingBottom: "10px",
-          background: scrolled ? "rgba(10, 23, 48, 0.92)" : "transparent",
-          backdropFilter: scrolled ? "blur(12px)" : "none",
+          background: "transparent",
         }}
       >
         <div
@@ -58,11 +50,8 @@ export default function Navbar() {
             paddingBottom: "8px",
             paddingLeft: "20px",
             gap: "10px",
-            backgroundColor: scrolled ? "#FFFFFF" : "rgba(255, 255, 255, 0.18)",
-            backdropFilter: "blur(20px)",
-            WebkitBackdropFilter: "blur(20px)",
-            border: scrolled ? "none" : "1px solid rgba(255, 255, 255, 0.3)",
-            boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.1)" : "0 4px 32px rgba(0, 0, 0, 0.2)",
+            backgroundColor: "#FFFFFF",
+            boxShadow: "0 2px 20px rgba(0,0,0,0.1)",
           }}
         >
           {/* Logo */}
@@ -90,7 +79,7 @@ export default function Navbar() {
                   fontSize: "14px",
                   lineHeight: "100%",
                   letterSpacing: "0",
-                  color: scrolled ? "#0072B1" : "#FFFFFF",
+                  color: "#0072B1",
                   textDecoration: "none",
                   whiteSpace: "nowrap",
                 }}
