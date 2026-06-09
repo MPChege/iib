@@ -1,34 +1,138 @@
+import Image from "next/image";
+import Reveal from "./Reveal";
+
 export default function CTA() {
   return (
-    <section
-      className="py-16 md:py-20"
-      style={{
-        background: "linear-gradient(135deg, #1B3A6B 0%, #1E4A8A 50%, #1B3A6B 100%)",
-      }}
-    >
-      <div className="max-w-2xl mx-auto px-4 text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-          Transform your rental business with one platform
-        </h2>
-        <p className="text-blue-200 mb-8 text-sm md:text-base">
-          Whether you&#39;re replacing legacy software, improving visibility, or preparing for growth, our team can help you build a system that scales with your business.
-        </p>
-        <div className="flex flex-wrap justify-center gap-4">
+    <section className="relative overflow-hidden" style={{ width: "100%", minHeight: "419px" }}>
+
+      {/* Background photo */}
+      <div className="absolute inset-0">
+        <Image
+          src="/6245a0669f818d84bd8a5348a1288cbeb21767f7.jpg"
+          alt="Rental business"
+          fill
+          style={{ objectFit: "cover", objectPosition: "center top" }}
+          priority
+        />
+      </div>
+
+      {/* Gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(90deg, #050A18 0%, #142A56 30%, #1C386E 65%, #0072B1 100%)",
+          opacity: 0.88,
+        }}
+      />
+
+      {/* Content */}
+      <div
+        className="relative flex flex-col items-center justify-center text-center"
+        style={{
+          minHeight: "419px",
+          padding: "80px 24px",
+          gap: "32px",
+        }}
+      >
+        {/* Heading */}
+        <Reveal variant="up">
+          <h2
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 600,
+              fontSize: "36px",
+              lineHeight: "100%",
+              letterSpacing: "0",
+              color: "#FFFFFF",
+              margin: 0,
+              maxWidth: "800px",
+            }}
+          >
+            Transform your rental business with one platform
+          </h2>
+        </Reveal>
+
+        {/* Subtext */}
+        <Reveal variant="up" delay={80}>
+          <p
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 400,
+              fontSize: "16px",
+              lineHeight: "24px",
+              color: "rgba(255,255,255,0.8)",
+              margin: 0,
+              maxWidth: "700px",
+            }}
+          >
+            Whether you&apos;re replacing legacy software, improving visibility, or preparing for growth, our team can help you build a system that scales with your business.
+          </p>
+        </Reveal>
+
+        {/* Buttons */}
+        <Reveal variant="up" delay={160} style={{ display: "flex", alignItems: "center", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
+
+          {/* Book a demo — solid white */}
           <a
             href="#"
-            className="px-7 py-3 rounded font-semibold text-sm text-white transition-all hover:opacity-90"
-            style={{ background: "#E8773A" }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "51px",
+              borderRadius: "100px",
+              paddingTop: "16px",
+              paddingBottom: "16px",
+              paddingLeft: "48px",
+              paddingRight: "48px",
+              gap: "10px",
+              backgroundColor: "#FFFFFF",
+              border: "none",
+              textDecoration: "none",
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 600,
+              fontSize: "16px",
+              lineHeight: "100%",
+              color: "#0072B1",
+              whiteSpace: "nowrap",
+              cursor: "pointer",
+            }}
           >
             Book a demo
           </a>
+
+          {/* Explore Solutions — outline white */}
           <a
             href="#"
-            className="px-7 py-3 rounded font-semibold text-sm border-2 border-white text-white hover:bg-white hover:text-blue-900 transition-all"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "51px",
+              borderRadius: "100px",
+              paddingTop: "16px",
+              paddingBottom: "16px",
+              paddingLeft: "24px",
+              paddingRight: "24px",
+              gap: "10px",
+              backgroundColor: "transparent",
+              border: "1px solid #FFFFFF",
+              textDecoration: "none",
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 600,
+              fontSize: "16px",
+              lineHeight: "100%",
+              color: "#FFFFFF",
+              whiteSpace: "nowrap",
+              cursor: "pointer",
+            }}
           >
             Explore Solutions
           </a>
-        </div>
+
+        </Reveal>
       </div>
+
     </section>
   );
 }

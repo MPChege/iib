@@ -1,62 +1,166 @@
+import Image from "next/image";
+import Reveal from "./Reveal";
+
 const features = [
-  { text: "One inventory record", sub: "availability is always real" },
-  { text: "Live booking", sub: "no sync gap, no double-booking" },
-  { text: "Revenue posts straight to the GL", sub: "nothing to reconcile" },
-  { text: "One vendor", sub: "IIG builds it and supports it" },
-  { text: "Upgrade-safe", sub: "moves with Acumatica, not against it" },
+  { bold: "One inventory record", rest: " — availability is always real" },
+  { bold: "Live booking", rest: " — no sync gap, no double-booking" },
+  { bold: "Revenue posts straight to the GL", rest: " — nothing to reconcile" },
+  { bold: "One vendor", rest: " — IIG builds it and supports it" },
+  { bold: "Upgrade-safe", rest: " — moves with Acumatica, not against it" },
 ];
 
 export default function OnePlatform() {
   return (
-    <section
-      className="relative py-16 md:py-24 overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #1B3A6B 0%, #1E4A8A 50%, #1B3A6B 100%)",
-      }}
-    >
-      {/* Background person silhouette hint */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute right-0 bottom-0 w-80 h-full bg-gradient-to-l from-blue-300 to-transparent" />
+    <section className="relative overflow-hidden" style={{ width: "100%", minHeight: "576px" }}>
+
+      {/* Background photo */}
+      <div className="absolute inset-0">
+        <Image
+          src="/724266c0952abd56c92c678535cc3c863953d2c3.jpg"
+          alt="Workers on site"
+          fill
+          style={{ objectFit: "cover", objectPosition: "center" }}
+          priority
+        />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-        {/* Left */}
-        <div className="flex-1 text-white max-w-sm">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      {/* Gradient overlay — left half deep navy, right half fades to #0072B1 */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, #050A18 0%, #142A56 30%, #1C386E 55%, #0072B1 100%)",
+          opacity: 0.88,
+        }}
+      />
+
+      {/* Content */}
+      <div
+        className="relative flex flex-col md:flex-row items-center"
+        style={{
+          maxWidth: "1512px",
+          margin: "0 auto",
+          paddingTop: "120px",
+          paddingBottom: "120px",
+          paddingLeft: "208px",
+          paddingRight: "208px",
+          gap: "48px",
+        }}
+      >
+        {/* Left column */}
+        <Reveal variant="left" style={{ display: "flex", flexDirection: "column", gap: "24px", flexShrink: 0 }}>
+          {/* Heading */}
+          <h2
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 600,
+              fontSize: "36px",
+              lineHeight: "100%",
+              letterSpacing: "0",
+              color: "#FFFFFF",
+              margin: 0,
+              width: "424px",
+            }}
+          >
             One platform, one source of truth
           </h2>
-          <p className="text-blue-200 text-sm md:text-base mb-6 leading-relaxed">
+
+          {/* Sub-copy */}
+          <p
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 400,
+              fontSize: "14px",
+              lineHeight: "21px",
+              color: "#B8C9E4",
+              margin: 0,
+              maxWidth: "380px",
+            }}
+          >
             Rental operations run inside Acumatica Cloud ERP — same database, same login.
           </p>
+
+          {/* Button */}
           <a
             href="#"
-            className="inline-flex items-center px-5 py-2.5 rounded text-sm font-semibold border-2 border-white text-white hover:bg-white hover:text-blue-900 transition-all"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "fit-content",
+              height: "51px",
+              borderRadius: "100px",
+              border: "1px solid #FFFFFF",
+              paddingTop: "16px",
+              paddingBottom: "16px",
+              paddingLeft: "48px",
+              paddingRight: "48px",
+              gap: "10px",
+              backgroundColor: "#FFFFFF",
+              textDecoration: "none",
+              cursor: "pointer",
+            }}
           >
-            See it on your data
+            <span
+              style={{
+                fontFamily: "Inter, sans-serif",
+                fontWeight: 600,
+                fontSize: "16px",
+                lineHeight: "100%",
+                letterSpacing: "-0.01em",
+                color: "#0072B1",
+                whiteSpace: "nowrap",
+              }}
+            >
+              See it on your data
+            </span>
           </a>
-        </div>
+        </Reveal>
 
-        {/* Right – checklist */}
-        <div className="flex-1">
-          <ul className="space-y-4">
-            {features.map((f, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <div
-                  className="w-6 h-6 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
-                  style={{ background: "#4CAF50" }}
-                >
-                  <svg className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <span className="text-white text-sm md:text-base">
-                  <span className="font-semibold">{f.text}</span>
-                  {" — "}
-                  <span className="text-blue-200">{f.sub}</span>
-                </span>
-              </li>
-            ))}
-          </ul>
+        {/* Right column — feature list */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px", flex: 1 }}>
+          {features.map((f, i) => (
+            <Reveal key={i} variant="right" delay={i * 80} style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+              {/* Tick circle */}
+              <div
+                style={{
+                  width: "48px",
+                  height: "48px",
+                  borderRadius: "50%",
+                  backgroundColor: "#ECF3FF",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexShrink: 0,
+                }}
+              >
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path
+                    d="M5 11.5L9 15.5L17 7"
+                    stroke="#1B3A6B"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+
+              {/* Text */}
+              <p
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: "20px",
+                  lineHeight: "100%",
+                  letterSpacing: "0",
+                  color: "#ECF3FF",
+                  margin: 0,
+                }}
+              >
+                <span style={{ fontWeight: 600 }}>{f.bold}</span>
+                <span style={{ fontWeight: 400 }}>{f.rest}</span>
+              </p>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

@@ -1,32 +1,47 @@
+import Reveal from "./Reveal";
+
 const industries = [
   {
+    headerBg: "#2B5EA7",
+    checkColor: "#2B5EA7",
+    cardBg: "#F5F8FC",
     icon: (
-      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 3l9 9-9 9-9-9z" />
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="2" width="9" height="9" rx="1.5" fill="white" opacity="0.9"/>
+        <rect x="2" y="13" width="9" height="9" rx="1.5" fill="white" opacity="0.6"/>
+        <rect x="13" y="5" width="9" height="3" rx="1" fill="white" opacity="0.8"/>
+        <rect x="13" y="10" width="9" height="3" rx="1" fill="white" opacity="0.8"/>
+        <rect x="13" y="15" width="9" height="3" rx="1" fill="white" opacity="0.8"/>
       </svg>
     ),
     title: "AV & Event",
-    tagline: "Serialized gear. Fast turnarounds.",
-    color: "#1B3A6B",
+    tagline: "Serialized gear, fast turnarounds",
+    description:
+      "Stage, lighting, and audio inventory moves in kits and comes back in pieces. Track every serial number through prep, show, and return.",
     bullets: [
-      "Stage, lighting, and audio inventory moves in kits and components in pieces. Track every serial number through prep, show, and return.",
-      "Kit & package building with auto-serials",
+      "Kit & package building with sub-rentals",
       "Serial & barcode check-in / check-out",
-      "Crew & labor resource scheduling",
+      "Crew, labor & delivery scheduling",
       "Damage & shortage reconciliation",
     ],
   },
   {
+    headerBg: "#3D8B3D",
+    checkColor: "#3D8B3D",
+    cardBg: "#F5F8FC",
     icon: (
-      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M3 12l9-9 9 9v9H3v-9z" />
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="2" width="9" height="9" rx="1" stroke="white" strokeWidth="1.8" fill="none"/>
+        <rect x="13" y="2" width="9" height="9" rx="1" stroke="white" strokeWidth="1.8" fill="none"/>
+        <rect x="2" y="13" width="9" height="9" rx="1" stroke="white" strokeWidth="1.8" fill="none"/>
+        <rect x="13" y="13" width="9" height="9" rx="1" stroke="white" strokeWidth="1.8" fill="none"/>
       </svg>
     ),
     title: "Scaffolding",
-    tagline: "Long jobs, to-the-pencil billing.",
-    color: "#4CAF50",
+    tagline: "Long jobs, by-the-period billing",
+    description:
+      "Bulk components out for months, billed by the day or period, often across multiple stages of a single project. Keep the yard and the invoice in sync.",
     bullets: [
-      "Bulk components out for months, billed by the day on period, often across multiple stages or a single project. Keep the yard and the invoice in sync.",
       "Recurring period & cycle billing",
       "Bulk-component yard management",
       "Partial deliveries & pickups by stage",
@@ -34,18 +49,25 @@ const industries = [
     ],
   },
   {
+    headerBg: "#2B5EA7",
+    checkColor: "#2B5EA7",
+    cardBg: "#F5F8FC",
     icon: (
-      <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z" />
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+        <path d="M2 17h20M4 17v-4l3-5h10l3 5v4" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="7.5" cy="19.5" r="1.5" fill="white"/>
+        <circle cx="16.5" cy="19.5" r="1.5" fill="white"/>
+        <path d="M9 8h6M12 5v6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
     title: "Construction Equipment",
-    tagline: "High-value assets, service-driven.",
-    color: "#E8773A",
-    bullets: [
+    tagline: "High-value assets, service-driven",
+    description:
       "Excavators, lifts, and loaders that need utilization tracked, meters read, and maintenance scheduled — because downtime is lost revenue.",
+    bullets: [
+      "Fleet utilization & ROI reporting",
       "Meter-based billing (hours / mileage)",
-      "Preventive maintenance scheduling",
+      "Preventive-maintenance scheduling",
       "Delivery, pickup & transport logistics",
     ],
   },
@@ -53,51 +75,194 @@ const industries = [
 
 export default function Industries() {
   return (
-    <section className="py-16 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-4">
-          <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#1B3A6B" }}>
-            One rental engine.
-          </h2>
-          <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#E8773A" }}>
-            Three industries it was built for.
-          </h2>
-        </div>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-sm md:text-base">
-          The mechanics of renting an LED wall, a scaffold tower, and an excavator are different. AcuRental ships with the workflows, billing models, and asset tracking each one demands.
-        </p>
+    <section style={{ backgroundColor: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+      <div style={{ maxWidth: "1400px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Heading */}
+        <Reveal variant="up">
+          <h2
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 600,
+              fontSize: "36px",
+              lineHeight: "100%",
+              letterSpacing: "0",
+              color: "#0072B1",
+              textAlign: "center",
+              maxWidth: "1095px",
+              margin: "0 auto 16px",
+            }}
+          >
+            One rental engine. Three industries it was built for.
+          </h2>
+        </Reveal>
+
+        {/* Subtext */}
+        <Reveal variant="up" delay={80}>
+          <p
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 400,
+              fontSize: "16px",
+              lineHeight: "24px",
+              color: "#354155",
+              textAlign: "center",
+              maxWidth: "871px",
+              margin: "0 auto 56px",
+            }}
+          >
+            The mechanics of renting an LED wall, a scaffold tower, and an excavator are different. AcuRental ships with the workflows, billing models, and asset tracking each one demands.
+          </p>
+        </Reveal>
+
+        {/* Cards grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "24px",
+          }}
+          className="grid-cols-1 sm:grid-cols-3"
+        >
           {industries.map((ind, i) => (
-            <div key={i} className="rounded-xl overflow-hidden border border-gray-200 hover:shadow-md transition-shadow">
-              {/* Header */}
-              <div className="px-5 py-4 flex items-center gap-3" style={{ background: ind.color }}>
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/20">
+            <Reveal
+              key={i}
+              variant="scale"
+              delay={i * 120}
+              style={{
+                borderRadius: "24px",
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+              }}
+            >
+              {/* Solid colour header */}
+              <div
+                style={{
+                  backgroundColor: ind.headerBg,
+                  padding: "32px 36px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "16px",
+                }}
+              >
+                {/* Icon box — semi-transparent white rounded square */}
+                <div
+                  style={{
+                    width: "48px",
+                    height: "48px",
+                    borderRadius: "10px",
+                    backgroundColor: "rgba(255,255,255,0.18)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                  }}
+                >
                   {ind.icon}
                 </div>
-                <div>
-                  <div className="text-white font-bold text-base">{ind.title}</div>
-                  <div className="text-white/80 text-xs">{ind.tagline}</div>
+
+                {/* Title + tagline stacked */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                  <span
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 700,
+                      fontSize: "18px",
+                      lineHeight: "100%",
+                      color: "#FFFFFF",
+                    }}
+                  >
+                    {ind.title}
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontWeight: 400,
+                      fontSize: "13px",
+                      lineHeight: "100%",
+                      color: "rgba(255,255,255,0.75)",
+                    }}
+                  >
+                    {ind.tagline}
+                  </span>
                 </div>
               </div>
 
               {/* Body */}
-              <div className="p-5">
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">{ind.bullets[0]}</p>
-                <ul className="space-y-1.5">
-                  {ind.bullets.slice(1).map((b, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-gray-700">
-                      <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" style={{ color: ind.color }}>
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              <div
+                style={{
+                  backgroundColor: ind.cardBg,
+                  padding: "32px 36px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "16px",
+                  flex: 1,
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontWeight: 400,
+                    fontSize: "14px",
+                    lineHeight: "21px",
+                    color: "#354155",
+                    margin: 0,
+                  }}
+                >
+                  {ind.description}
+                </p>
+
+                <ul
+                  style={{
+                    listStyle: "none",
+                    padding: 0,
+                    margin: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                  }}
+                >
+                  {ind.bullets.map((b, j) => (
+                    <li
+                      key={j}
+                      style={{ display: "flex", alignItems: "flex-start", gap: "8px" }}
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        style={{ flexShrink: 0, marginTop: "2px" }}
+                      >
+                        <path
+                          d="M2.5 8.5L6 12L13.5 4.5"
+                          stroke={ind.checkColor}
+                          strokeWidth="1.8"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
                       </svg>
-                      {b}
+                      <span
+                        style={{
+                          fontFamily: "Inter, sans-serif",
+                          fontWeight: 400,
+                          fontSize: "14px",
+                          lineHeight: "21px",
+                          color: "#354155",
+                        }}
+                      >
+                        {b}
+                      </span>
                     </li>
                   ))}
                 </ul>
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
+
       </div>
     </section>
   );

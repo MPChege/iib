@@ -1,124 +1,192 @@
-const cards = [
-  {
-    logo: (
-      <div className="flex items-center gap-2 mb-3">
-        <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: "#E8773A" }}>
-          <span className="text-white font-bold text-sm">A</span>
-        </div>
-        <span className="text-2xl font-bold" style={{ color: "#E8773A" }}>Acumatica</span>
-      </div>
-    ),
-    description:
-      "From discovery and scoping through go-live and beyond. We migrate your data, preserve your customizations, and train your team.",
-    bullets: [
-      "Gold-certified, fixed-scope delivery",
-      "Data migration & cutover planning",
-      "Ongoing 24/7 US-based support",
-    ],
-    link: "Plan your implementation →",
-    bg: "white",
-  },
-  {
-    logo: (
-      <div className="mb-3">
-        <span className="text-2xl font-extrabold" style={{ color: "#1B3A6B" }}>
-          acu<span style={{ color: "#E8773A" }}>rental</span>
-        </span>
-      </div>
-    ),
-    description:
-      "Certified rental order processing built natively inside Acumatica — purpose built for AcuRent, scaffolding, and construction equipment rentals.",
-    bullets: [
-      "Quote, contract, bill & return in one flow",
-      "Real-time availability across yards",
-      "Revenue posts straight to your GL",
-    ],
-    link: "Explore AcuRental →",
-    bg: "white",
-  },
-  {
-    logo: (
-      <div className="mb-3">
-        <span className="text-2xl font-extrabold" style={{ color: "#1B3A6B" }}>
-          Acu<span style={{ color: "#E8773A" }}>boost</span>
-        </span>
-        <div className="flex gap-1 mt-1">
-          {["#1B3A6B", "#E8773A", "#4CAF50"].map((c, i) => (
-            <div key={i} className="w-4 h-1 rounded-full" style={{ background: c }} />
-          ))}
-        </div>
-      </div>
-    ),
-    description:
-      "Purpose-built modules that extend Acumatica for complex operations — from advanced work orders to container and equipment tracking.",
-    bullets: [
-      "Native, upgrade-safe extensions",
-      "Built and maintained in-house",
-      "Mix & match to your workflow",
-    ],
-    link: "Browse the modules →",
-    bg: "white",
-  },
-  {
-    logo: (
-      <div className="mb-3 flex items-center gap-2">
-        <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: "#1B3A6B" }}>
-          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M3 3h18v18H3z" />
-          </svg>
-        </div>
-        <span className="text-lg font-bold text-gray-800">Construction &amp; Equipment</span>
-      </div>
-    ),
-    description:
-      "Job costing, equipment management, and field operations — AcuConstruct and AcuEquipment bring the jobsite and the back office onto one ledger.",
-    bullets: [
-      "Project & job-cost accounting",
-      "Equipment utilization & service",
-      "Work orders from quote to close",
-    ],
-    link: "See the suite →",
-    bg: "#F7F8FA",
-  },
-];
+import Image from "next/image";
+import Reveal from "./Reveal";
+
+const bullets = {
+  acumatica: [
+    "Gold-certified, fixed-scope delivery",
+    "Data migration & cutover planning",
+    "Ongoing 24/7 US-based support",
+  ],
+  acuRental: [
+    "Quote, contract, bill & return in one flow",
+    "Real-time availability across yards",
+    "Revenue posts straight to your GL",
+  ],
+  acuBoost: [
+    "Native, upgrade-safe extensions",
+    "Built and maintained in-house",
+    "Mix & match to your workflow",
+  ],
+  constEquip: [
+    "Project & job-cost accounting",
+    "Equipment utilization & service",
+    "Work orders from quote to close",
+  ],
+};
+
+function Checkmark() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0, marginTop: "2px" }}>
+      <path d="M3 9.5L7 13.5L15 5" stroke="#0072B1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function BulletList({ items }: { items: string[] }) {
+  return (
+    <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
+      {items.map((b, i) => (
+        <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+          <Checkmark />
+          <span style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "21px", color: "#354155" }}>
+            {b}
+          </span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function CardLink({ label }: { label: string }) {
+  return (
+    <a
+      href="#"
+      style={{
+        fontFamily: "Inter, sans-serif",
+        fontWeight: 400,
+        fontSize: "14px",
+        lineHeight: "100%",
+        letterSpacing: "0",
+        color: "#0072B1",
+        textDecoration: "none",
+      }}
+    >
+      {label}
+    </a>
+  );
+}
+
+/* Card style variants */
+const cardBase: React.CSSProperties = {
+  borderRadius: "24px",
+  border: "2px solid #ECF3FF",
+  padding: "48px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "24px",
+};
+
+const cardBlue: React.CSSProperties = { ...cardBase, backgroundColor: "#ECF3FF" };
+const cardWhite: React.CSSProperties = { ...cardBase, backgroundColor: "#F5F8FC" };
 
 export default function FourWays() {
   return (
-    <section className="py-16 md:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-4">
-          <h2 className="text-2xl md:text-3xl font-bold" style={{ color: "#1B3A6B" }}>
+    <section style={{ backgroundColor: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+      <div style={{ maxWidth: "1200px", margin: "0 auto", paddingLeft: "24px", paddingRight: "24px" }}>
+
+        {/* Heading */}
+        <Reveal variant="up">
+          <h2
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 600,
+              fontSize: "36px",
+              lineHeight: "100%",
+              letterSpacing: "0",
+              color: "#0072B1",
+              textAlign: "center",
+              marginBottom: "16px",
+            }}
+          >
             Four ways we put Acumatica to work for you
           </h2>
-        </div>
-        <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-sm md:text-base">
-          We&#39;re both the Implementer and the ISV — the rare partner that scopes your ERP, configures it, and engineers the add-ons your operation actually needs. No hand-offs, no finger-pointing.
-        </p>
+        </Reveal>
 
+        {/* Subtext */}
+        <Reveal variant="up" delay={80}>
+          <p
+            style={{
+              fontFamily: "Inter, sans-serif",
+              fontWeight: 400,
+              fontSize: "16px",
+              lineHeight: "24px",
+              letterSpacing: "0",
+              color: "#354155",
+              textAlign: "center",
+              maxWidth: "1096px",
+              margin: "0 auto 56px",
+            }}
+          >
+            We&apos;re both the implementer and the ISV — the rare partner that scopes your ERP, configures it, and engineers the add-ons your operation actually needs. No hand-offs, no finger-pointing.
+          </p>
+        </Reveal>
+
+        {/* 2×2 grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {cards.map((card, i) => (
-            <div
-              key={i}
-              className="rounded-xl p-6 border border-gray-200 hover:shadow-md transition-shadow"
-              style={{ background: card.bg }}
-            >
-              {card.logo}
-              <p className="text-gray-600 text-sm mb-4 leading-relaxed">{card.description}</p>
-              <ul className="space-y-1.5 mb-5">
-                {card.bullets.map((b, j) => (
-                  <li key={j} className="flex items-start gap-2 text-sm text-gray-700">
-                    <svg className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "#1B3A6B" }} fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                    {b}
-                  </li>
-                ))}
-              </ul>
-              <a href="#" className="text-sm font-semibold hover:opacity-80 transition-opacity" style={{ color: "#1B3A6B" }}>
-                {card.link}
-              </a>
+
+          {/* Card 1 */}
+          <Reveal variant="scale" delay={0} style={cardBlue}>
+            <Image src="/image 3.svg" alt="Acumatica" width={248} height={62} style={{ width: "248px", height: "62px" }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "21px", color: "#354155", margin: 0 }}>
+                From discovery and scoping through go-live and beyond. We migrate your data, preserve your customizations, and train your team.
+              </p>
+              <BulletList items={bullets.acumatica} />
+              <CardLink label="Plan your implementation →" />
             </div>
-          ))}
+          </Reveal>
+
+          {/* Card 2 */}
+          <Reveal variant="scale" delay={120} style={cardWhite}>
+            <Image src="/image 2.svg" alt="AcuRental" width={248} height={63} style={{ width: "248px", height: "63px" }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "21px", color: "#354155", margin: 0 }}>
+                Certified rental order processing built natively inside Acumatica — purpose-built for AV/event, scaffolding, and construction-equipment fleets.
+              </p>
+              <BulletList items={bullets.acuRental} />
+              <CardLink label="Explore AcuRental →" />
+            </div>
+          </Reveal>
+
+          {/* Card 3 */}
+          <Reveal variant="scale" delay={80} style={cardWhite}>
+            <Image src="/image 4.svg" alt="AcuBoost" width={248} height={63} style={{ width: "248px", height: "63px" }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "21px", color: "#354155", margin: 0 }}>
+                Sixteen purpose-built modules that extend Acumatica for complex operations — from advanced work orders to container and equipment tracking.
+              </p>
+              <BulletList items={bullets.acuBoost} />
+              <CardLink label="Browse the modules →" />
+            </div>
+          </Reveal>
+
+          {/* Card 4 */}
+          <Reveal variant="scale" delay={200} style={cardBlue}>
+            <div
+              style={{
+                width: "62px",
+                height: "62px",
+                borderRadius: "12px",
+                backgroundColor: "#0072B1",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                paddingTop: "2px",
+                paddingBottom: "2px",
+                flexShrink: 0,
+              }}
+            >
+              <Image src="/Vector.svg" alt="Construction & Equipment" width={32} height={30} />
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "21px", color: "#354155", margin: 0 }}>
+                Job costing, equipment management, and field operations — AcuConstruct and AcuEquipment bring the jobsite and the back office onto one ledger.
+              </p>
+              <BulletList items={bullets.constEquip} />
+              <CardLink label="See the suite →" />
+            </div>
+          </Reveal>
+
         </div>
       </div>
     </section>
