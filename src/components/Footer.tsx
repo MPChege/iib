@@ -1,93 +1,173 @@
-const footerLinks = {
-  Solutions: ["Acumatica Cloud ERP", "AcuRental", "AcuBoost", "Sage 100", "Custom Developments"],
-  Industries: ["Equipment Rental", "Event Rental", "Scaffolding", "AV & Production Rental", "Specialty Rental", "Distribution"],
-  Resources: ["About", "Success Stories", "Product Videos", "Webinars", "Blog"],
+import Image from "next/image";
+
+const solutions = ["AcuRental", "Acumatica Cloud ERP", "Sage 100", "AcuBoost ISV", "Custom Development"];
+const industries = ["Equipment Rental", "Construction Rental", "Event Rental", "AV & Production Rental", "Specialty Rental", "Distribution"];
+const resources = ["About", "Success Stories", "Product Videos", "Webinars", "Blog"];
+
+const linkStyle: React.CSSProperties = {
+  fontFamily: "Inter, sans-serif",
+  fontWeight: 400,
+  fontSize: "14px",
+  lineHeight: "100%",
+  color: "rgba(255,255,255,0.6)",
+  textDecoration: "none",
+  display: "block",
+};
+
+const headingStyle: React.CSSProperties = {
+  fontFamily: "Inter, sans-serif",
+  fontWeight: 600,
+  fontSize: "16px",
+  lineHeight: "100%",
+  color: "#FFFFFF",
+  marginBottom: "24px",
+};
+
+const contactIconStyle: React.CSSProperties = {
+  flexShrink: 0,
+  marginTop: "1px",
 };
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-12 pb-6">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-10">
-          {/* Brand column */}
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-1 mb-4">
-              {[
-                { letter: "i", bg: "#1B3A6B" },
-                { letter: "i", bg: "#E8773A" },
-                { letter: "g", bg: "#1B3A6B" },
-              ].map((item, i) => (
-                <div key={i} className="w-8 h-8 rounded-md flex items-center justify-center" style={{ background: item.bg }}>
-                  <span className="text-white font-bold text-sm">{item.letter}</span>
-                </div>
-              ))}
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              Helping rental businesses streamline operations, improve visibility, and grow faster with Acumatica Cloud ERP solutions.
-            </p>
-            <p className="text-gray-500 text-xs">
-              Founded in 1992, IIG combines deep industry expertise with modern technology to help organizations operate at their peak.
-            </p>
-          </div>
+    <footer style={{ backgroundColor: "#0A1730" }}>
+      {/* Main footer body */}
+      <div
+        style={{
+          maxWidth: "1512px",
+          margin: "0 auto",
+          padding: "80px 96px 64px",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
+          gap: "48px",
+          alignItems: "start",
+        }}
+        className="footer-grid"
+      >
+        {/* Col 1 — Brand */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <Image src="/image 1.svg" alt="IIG Logo" width={92} height={36} />
 
-          {/* Link columns */}
-          {Object.entries(footerLinks).map(([heading, links]) => (
-            <div key={heading}>
-              <h3 className="text-white font-semibold text-sm mb-4">{heading}</h3>
-              <ul className="space-y-2">
-                {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "22px", color: "rgba(255,255,255,0.6)", margin: 0 }}>
+            Helping rental businesses streamline operations, improve visibility, and drive growth through purpose-built software and ERP solutions.
+          </p>
 
-          {/* Contact column */}
-          <div>
-            <h3 className="text-white font-semibold text-sm mb-4">Contact Us</h3>
-            <ul className="space-y-3 text-sm text-gray-400">
-              <li className="flex items-start gap-2">
-                <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
-                (818) 900-1764
-              </li>
-              <li className="flex items-start gap-2">
-                <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
-                info@iigservices.com
-              </li>
-              <li className="flex items-start gap-2">
-                <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                </svg>
-                <span>457 Palm Dr, Suite 210<br />Glendale, Los Angeles<br />CA 91202</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg className="w-4 h-4 mt-0.5 flex-shrink-0 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                </svg>
-                <span>Monday – Friday<br />8:00 AM – 5:30 PM PST</span>
-              </li>
-            </ul>
+          <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "22px", color: "rgba(255,255,255,0.6)", margin: 0 }}>
+            Founded in 1992, IIG combines deep industry expertise with modern technology to help organizations operate smarter.
+          </p>
+
+          {/* Social icons */}
+          <div style={{ display: "flex", gap: "12px" }}>
+            {[
+              /* LinkedIn */
+              <svg key="li" width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="rgba(255,255,255,0.1)"/><path d="M13 15h-2v8h2v-8zm-1-1.5a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zM24 23h-2v-4c0-1-.4-1.5-1.2-1.5-.8 0-1.3.6-1.3 1.5v4h-2v-8h2v1.1c.5-.8 1.3-1.3 2.2-1.3 1.7 0 2.3 1.2 2.3 3v5.2z" fill="rgba(255,255,255,0.5)"/></svg>,
+              /* Twitter/X */
+              <svg key="tw" width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="rgba(255,255,255,0.1)"/><path d="M20.2 17.1L24.5 12h-1l-3.7 4.3L16.8 12H13l4.5 6.6L13 24h1l3.9-4.5 3.1 4.5H25l-4.8-6.9zm-1.4 1.6l-.5-.6-3.6-5.2h1.6l3 4.3.5.6 3.7 5.4h-1.6l-3.1-4.5z" fill="rgba(255,255,255,0.5)"/></svg>,
+              /* Facebook */
+              <svg key="fb" width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="rgba(255,255,255,0.1)"/><path d="M19.5 18.5H21l.5-2H19.5v-1c0-.6.2-1 1-1H21.5v-1.8c-.3 0-1-.1-1.7-.1-1.7 0-2.8 1-2.8 2.9v1H15.5v2h1.5V24h2.5v-5.5z" fill="rgba(255,255,255,0.5)"/></svg>,
+              /* YouTube */
+              <svg key="yt" width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="rgba(255,255,255,0.1)"/><path d="M24.5 15.2s-.2-1.2-.8-1.7c-.7-.8-1.5-.8-1.9-.8C19.9 12.5 18 12.5 18 12.5s-1.9 0-3.8.2c-.4.1-1.2.1-1.9.8-.6.5-.8 1.7-.8 1.7S11.3 16.5 11.3 18v1.3c0 1.5.2 2.8.2 2.8s.2 1.2.8 1.7c.7.8 1.7.7 2.1.8 1.5.1 6.6.2 6.6.2s1.9 0 3.8-.3c.4-.1 1.2-.1 1.9-.8.6-.5.8-1.7.8-1.7s.2-1.3.2-2.7V18c0-1.4-.2-2.8-.2-2.8zM16.5 20.4v-4.8l5.1 2.4-5.1 2.4z" fill="rgba(255,255,255,0.5)"/></svg>,
+            ]}
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-gray-500">
-          <span>© 2024 Information Integration Group (IIG). All Rights Reserved.</span>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Terms of Use</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Cookie Policy</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Accessibility Menu</a>
+        {/* Col 2 — Solutions */}
+        <div>
+          <p style={headingStyle}>Solutions</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            {solutions.map((l) => <a key={l} href="#" style={linkStyle}>{l}</a>)}
           </div>
+        </div>
+
+        {/* Col 3 — Industries */}
+        <div>
+          <p style={headingStyle}>Industries</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            {industries.map((l) => <a key={l} href="#" style={linkStyle}>{l}</a>)}
+          </div>
+        </div>
+
+        {/* Col 4 — Resources */}
+        <div>
+          <p style={headingStyle}>Resources</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+            {resources.map((l) => <a key={l} href="#" style={linkStyle}>{l}</a>)}
+          </div>
+        </div>
+
+        {/* Col 5 — Contact Us */}
+        <div>
+          <p style={headingStyle}>Contact Us</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+
+            {/* Phone */}
+            <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+              <svg style={contactIconStyle} width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M16.5 12.9v2.1a1.4 1.4 0 01-1.5 1.4A13.9 13.9 0 012.1 3a1.4 1.4 0 011.4-1.5h2.1c.7 0 1.3.5 1.4 1.2.1.6.3 1.3.6 1.9.2.4.1.9-.2 1.2l-.9.9a11.1 11.1 0 005.7 5.7l.9-.9c.3-.3.8-.4 1.2-.2.6.3 1.3.5 1.9.6.7.1 1.2.7 1.3 1.4v-.4z" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <a href="tel:+18189563744" style={{ ...linkStyle, color: "rgba(255,255,255,0.75)" }}>(818) 956-3744</a>
+            </div>
+
+            {/* Email */}
+            <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+              <svg style={contactIconStyle} width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M3 3h12a1.5 1.5 0 011.5 1.5v9A1.5 1.5 0 0115 15H3a1.5 1.5 0 01-1.5-1.5v-9A1.5 1.5 0 013 3z" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M16.5 4.5l-7.5 6-7.5-6" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <a href="mailto:sales@iigservices.com" style={{ ...linkStyle, color: "rgba(255,255,255,0.75)" }}>sales@iigservices.com</a>
+            </div>
+
+            {/* Hours */}
+            <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+              <svg style={contactIconStyle} width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <circle cx="9" cy="9" r="7.5" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+                <path d="M9 5v4l2.5 2.5" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span style={{ ...linkStyle, color: "rgba(255,255,255,0.6)", lineHeight: "22px" }}>
+                Monday – Friday<br />8:00 AM – 5:00 PM PST
+              </span>
+            </div>
+
+            {/* Address */}
+            <div style={{ display: "flex", alignItems: "flex-start", gap: "12px" }}>
+              <svg style={contactIconStyle} width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M9 1.5a6 6 0 016 6c0 4.5-6 10.5-6 10.5S3 12 3 7.5a6 6 0 016-6z" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="9" cy="7.5" r="1.5" stroke="rgba(255,255,255,0.5)" strokeWidth="1.5"/>
+              </svg>
+              <span style={{ ...linkStyle, color: "rgba(255,255,255,0.6)", lineHeight: "22px" }}>
+                457 Palm Dr, Suite 200<br />Glendale, Los Angeles<br />California 91202
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", margin: "0 96px" }} />
+
+      {/* Bottom bar */}
+      <div
+        style={{
+          maxWidth: "1512px",
+          margin: "0 auto",
+          padding: "24px 96px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "16px",
+        }}
+      >
+        <span style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "13px", color: "rgba(255,255,255,0.4)" }}>
+          © 2026 Information Integration Group (IIG). All Rights Reserved.
+        </span>
+        <div style={{ display: "flex", gap: "24px" }}>
+          {["Privacy Policy", "Terms of Use", "Cookie Policy", "Accessibility Statement"].map((l) => (
+            <a key={l} href="#" style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "13px", color: "rgba(255,255,255,0.4)", textDecoration: "none" }}>
+              {l}
+            </a>
+          ))}
         </div>
       </div>
     </footer>
