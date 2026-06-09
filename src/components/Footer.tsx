@@ -46,7 +46,7 @@ export default function Footer() {
       >
         {/* Col 1 — Brand */}
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-          <Image src="/image 1.svg" alt="IIG Logo" width={92} height={36} />
+          <Image src="/image-1.svg" alt="IIG Logo" width={92} height={36} />
 
           <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "22px", color: "rgba(255,255,255,0.6)", margin: 0 }}>
             Helping rental businesses streamline operations, improve visibility, and drive growth through purpose-built software and ERP solutions.

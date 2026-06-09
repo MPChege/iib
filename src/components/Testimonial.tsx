@@ -89,7 +89,7 @@ export default function Testimonial() {
                 }}
               >
                 <Image
-                  src="/Ellipse 5.svg"
+                  src="/ellipse-5.svg"
                   alt="Rental Operations Director"
                   width={48}
                   height={48}

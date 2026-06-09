@@ -126,7 +126,7 @@ export default function FourWays() {
 
           {/* Card 1 */}
           <Reveal variant="scale" delay={0} style={cardBlue}>
-            <Image src="/image 3.svg" alt="Acumatica" width={248} height={62} style={{ width: "248px", height: "62px" }} />
+            <Image src="/image-3.svg" alt="Acumatica" width={248} height={62} style={{ width: "248px", height: "62px" }} />
             <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
               <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "21px", color: "#354155", margin: 0 }}>
                 From discovery and scoping through go-live and beyond. We migrate your data, preserve your customizations, and train your team.
@@ -138,7 +138,7 @@ export default function FourWays() {
 
           {/* Card 2 */}
           <Reveal variant="scale" delay={120} style={cardWhite}>
-            <Image src="/image 2.svg" alt="AcuRental" width={248} height={63} style={{ width: "248px", height: "63px" }} />
+            <Image src="/image-2.svg" alt="AcuRental" width={248} height={63} style={{ width: "248px", height: "63px" }} />
             <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
               <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "21px", color: "#354155", margin: 0 }}>
                 Certified rental order processing built natively inside Acumatica — purpose-built for AV/event, scaffolding, and construction-equipment fleets.
@@ -150,7 +150,7 @@ export default function FourWays() {
 
           {/* Card 3 */}
           <Reveal variant="scale" delay={80} style={cardWhite}>
-            <Image src="/image 4.svg" alt="AcuBoost" width={248} height={63} style={{ width: "248px", height: "63px" }} />
+            <Image src="/image-4.svg" alt="AcuBoost" width={248} height={63} style={{ width: "248px", height: "63px" }} />
             <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
               <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "14px", lineHeight: "21px", color: "#354155", margin: 0 }}>
                 Sixteen purpose-built modules that extend Acumatica for complex operations — from advanced work orders to container and equipment tracking.

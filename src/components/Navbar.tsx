@@ -56,7 +56,7 @@ export default function Navbar() {
         >
           {/* Logo */}
           <Image
-            src="/image 1.svg"
+            src="/image-1.svg"
             alt="IIG Logo"
             width={92}
             height={36}
@@ -128,7 +128,7 @@ export default function Navbar() {
           backdropFilter: "blur(16px)",
         }}
       >
-        <Image src="/image 1.svg" alt="IIG Logo" width={92} height={36} priority />
+        <Image src="/image-1.svg" alt="IIG Logo" width={92} height={36} priority />
         <button
           className="p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
